@@ -42,7 +42,7 @@ else
     echo
     echo -e "Set expire time in hours: "
     read expire
-    echo -e "Setting rule to expire in $expire seconds."
+    echo -e "Setting rule to expire in $expire hours."
     echo -e "Running DROP in $expire hour(s)."
     echo
     echo -e "-- -- --"
