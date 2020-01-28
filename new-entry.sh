@@ -1,10 +1,10 @@
 #!/bin/bash
 #This script will allow you to set an expiring iptables rule 
 
-#if [ "$EUID" -ne 0 ]
-#  then echo "Run as root, exiting.."
-#  exit
-#fi
+if ! [ $(id -u) = 0 ]; then
+   echo "I am not root!"
+   exit 1
+fi
 
 echo -e "Enter IP, PROTOCOL & PORT to be opened in the Firewall"
 echo -e "Enter IP and press [ENTER]"
@@ -35,9 +35,13 @@ else
     echo -e "Set expire time in hours: "
     read expire
     echo -e "Setting rule to expire in $expire seconds."
-    iptables -I INPUT -p $protocol -s $d_ip --dport $d_port  -j ACCEPT
     echo -e "Running DROP in $expire hour(s)."
+    echo -e "-- -- --"
+    echo -e "Running iptables commands now.."
+    iptables -I INPUT -p $protocol -s $d_ip --dport $d_port  -j ACCEPT
     echo "iptables -I INPUT -p $protocol -s $d_ip --dport $d_port  -j DROP" | at now +$expire hour
+    echo -e "-- -- --"
+    echo -e "Rule added, drop set, exiting.."
     exit 1
  fi
 
