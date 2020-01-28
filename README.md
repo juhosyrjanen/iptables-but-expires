@@ -1,2 +1,2 @@
 # iptables-but-expires
-Interactive iptables rule manager, with expiring entries
+Interactive iptables rule adder, but drops in set hours.
