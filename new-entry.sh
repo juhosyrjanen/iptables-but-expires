@@ -48,7 +48,7 @@ else
     echo -e "-- -- --"
     echo -e "Running iptables commands now.."
     iptables -I INPUT -p $protocol -s $d_ip --dport $d_port  -j ACCEPT
-    echo "iptables -I INPUT -p $protocol -s $d_ip --dport $d_port  -j DROP" | at now +$expire hour
+    echo "iptables -D INPUT -p $protocol -s $d_ip --dport $d_port  -j DROP" | at now +$expire hour
     echo -e "-- -- --"
     echo
     echo -e "Rule added, drop set in $expire hour(s), exiting.."
