@@ -36,6 +36,7 @@ else
     read expire
     echo -e "Setting rule to expire in $expire seconds."
     iptables -I INPUT -p $protocol -s $d_ip --dport $d_port  -j ACCEPT
+    echo -e "Running DROP in $expire hour(s)."
     echo "iptables -I INPUT -p $protocol -s $d_ip --dport $d_port  -j DROP" | at now +$expire hour
     exit 1
  fi
