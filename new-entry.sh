@@ -7,6 +7,8 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
+echo 
+echo
 echo -e "Enter IP, PROTOCOL & PORT to be opened in the Firewall"
 echo 
 echo -e "Enter IP and press [ENTER]"
