@@ -33,7 +33,7 @@ read answer1
 if  [ "$answer1" == "n" ]; then
     echo -e "Rerun script. Exiting.."
     exit 1
-else
+elif [ "$answer1" == "y" ]; then
     echo -e "Saving to iptables.."
     echo
     echo -e "-- -- --"
@@ -53,5 +53,7 @@ else
     echo
     echo -e "Rule added, drop set in $expire hour(s), exiting.."
     exit 1
+else 
+    echo "Typo detected, rerun script. Exiting.."
  fi
 
